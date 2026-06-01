@@ -1,0 +1,50 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# OMNIX VISION — Docker Ignore
+# ═══════════════════════════════════════════════════════════════════════════
+# Keep the image small and avoid leaking secrets/dev files.
+
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# ── Virtual environments ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Testing & tooling ─────────────────────────────────────────────────────
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+tests/
+
+# ── Secrets (NEVER ship) ──────────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── Runtime data (start fresh in container) ───────────────────────────────
+data/*.json
+data/backups/*.zip
+assets/uploads/*
+assets/images/snapshot_*.jpg
+
+# ── Git & CI ──────────────────────────────────────────────────────────────
+.git/
+.github/
+.gitignore
+
+# ── IDE / OS ──────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ── Docs not needed at runtime ────────────────────────────────────────────
+*.md
+!README.md

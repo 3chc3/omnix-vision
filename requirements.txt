@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# OMNIX VISION — Python Dependencies (v2.0)
+# ═══════════════════════════════════════════════════════════════════════════
+# Install all at once:
+#   pip install -r requirements.txt
+#
+# Some features need extra setup beyond pip — see notes below.
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ── Core framework ────────────────────────────────────────────────────────
+streamlit>=1.30.0
+
+# ── Image processing (Media, Filters, Media Converter, QR codes) ──────────
+Pillow>=10.0.0
+
+# ── Computer vision (Camera, Hand Scan) ───────────────────────────────────
+opencv-python>=4.8.0
+mediapipe>=0.10.0
+numpy>=1.24.0
+
+# ── Charts & Dashboard ────────────────────────────────────────────────────
+plotly>=5.18.0
+pandas>=2.0.0
+
+# ── Calculator (Graph tab) ────────────────────────────────────────────────
+matplotlib>=3.7.0
+
+# ── Random Tools (QR Codes) ───────────────────────────────────────────────
+qrcode[pil]>=7.4.0
+
+# ═══════════════════════════════════════════════════════════════════════════
+# OPTIONAL — External tools NOT installed via pip
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# FFmpeg — required for audio/video conversion in Media Converter:
+#   Windows: download from https://ffmpeg.org/download.html and add to PATH
+#   macOS:   brew install ffmpeg
+#   Linux:   sudo apt install ffmpeg
+#
+# Without FFmpeg, audio/video tabs in Media Converter will show a warning
+# but the rest of the app works normally.
+# ═══════════════════════════════════════════════════════════════════════════

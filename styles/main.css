@@ -1,0 +1,239 @@
+/* ════════════════════════════════════════════════════════════════════════
+ * OMNIX VISION — Centralized Design System (v2.0)
+ * ════════════════════════════════════════════════════════════════════════
+ *
+ * USAGE (optional):
+ * Each page currently injects its own CSS. If you want to centralize,
+ * add this to a page with:
+ *
+ *   with open("styles/main.css") as f:
+ *       st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+ *
+ * Or use the CSS variables below in your inline styles for consistency.
+ * ════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+    /* Brand colors */
+    --omnix-primary:    #38bdf8;   /* cyan */
+    --omnix-secondary:  #a855f7;   /* purple */
+    --omnix-success:    #22c55e;   /* green */
+    --omnix-warning:    #f59e0b;   /* amber */
+    --omnix-error:      #ef4444;   /* red */
+    --omnix-info:       #06b6d4;   /* teal */
+
+    /* Backgrounds */
+    --omnix-bg-base:    #020617;
+    --omnix-bg-card:    #0f172a;
+    --omnix-bg-elevated:#1e293b;
+
+    /* Text */
+    --omnix-text-base:    #f8fafc;
+    --omnix-text-muted:   #94a3b8;
+    --omnix-text-subtle:  #64748b;
+
+    /* Borders */
+    --omnix-border-cyan:   rgba(56, 189, 248, 0.28);
+    --omnix-border-purple: rgba(168, 85, 247, 0.28);
+    --omnix-border-muted:  rgba(148, 163, 184, 0.18);
+
+    /* Effects */
+    --omnix-glow-cyan:   0 0 24px rgba(56, 189, 248, 0.40);
+    --omnix-glow-purple: 0 0 24px rgba(168, 85, 247, 0.40);
+    --omnix-shadow-md:   0 8px 28px rgba(0, 0, 0, 0.30);
+    --omnix-shadow-lg:   0 16px 44px rgba(56, 189, 248, 0.18);
+
+    /* Radii */
+    --omnix-radius-sm:  8px;
+    --omnix-radius-md:  14px;
+    --omnix-radius-lg:  22px;
+    --omnix-radius-xl:  30px;
+
+    /* Spacing */
+    --omnix-space-xs:   4px;
+    --omnix-space-sm:   8px;
+    --omnix-space-md:   16px;
+    --omnix-space-lg:   24px;
+    --omnix-space-xl:   32px;
+}
+
+
+/* ── Fonts ─────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+
+/* ── Streamlit Overrides ───────────────────────────────────────────────── */
+[data-testid="stSidebar"],
+[data-testid="collapsedControl"] {
+    display: none !important;
+}
+
+[data-testid="stAppDeployButton"],
+[data-testid="stToolbar"],
+header[data-testid="stHeader"] {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.stApp {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(168, 85, 247, 0.20), transparent 32%),
+        radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.08), transparent 30%),
+        linear-gradient(135deg, var(--omnix-bg-base) 0%, #06111f 48%, #111032 100%);
+    color: var(--omnix-text-base);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.block-container {
+    max-width: 1200px;
+    padding-top: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+/* ── Common Components ─────────────────────────────────────────────────── */
+
+.omnix-hero {
+    background:
+        radial-gradient(circle at top, rgba(168, 85, 247, 0.18), transparent 38%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(8, 47, 73, 0.58));
+    border: 1px solid rgba(56, 189, 248, 0.38);
+    border-radius: var(--omnix-radius-xl);
+    padding: var(--omnix-space-xl);
+    text-align: center;
+    margin-bottom: var(--omnix-space-lg);
+    box-shadow: 0 0 48px rgba(56, 189, 248, 0.16);
+}
+
+.omnix-hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: 44px;
+    font-weight: 950;
+    margin: 0;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg,
+        var(--omnix-primary),
+        var(--omnix-secondary),
+        var(--omnix-success),
+        var(--omnix-primary));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: omnix-shimmer 5s linear infinite;
+}
+
+@keyframes omnix-shimmer {
+    to { background-position: 300% center; }
+}
+
+
+/* ── Cards ─────────────────────────────────────────────────────────────── */
+.omnix-card {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.62));
+    border: 1px solid rgba(56, 189, 248, 0.27);
+    border-radius: var(--omnix-radius-lg);
+    padding: var(--omnix-space-lg);
+    margin-bottom: var(--omnix-space-md);
+    transition: 0.25s ease;
+}
+
+.omnix-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56, 189, 248, 0.65);
+    box-shadow: var(--omnix-shadow-lg);
+}
+
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+.stButton > button {
+    background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: var(--omnix-radius-md) !important;
+    padding: 12px 18px !important;
+    font-weight: 800 !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.20) !important;
+    transition: 0.25s ease !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 26px rgba(124, 58, 237, 0.35) !important;
+}
+
+.stButton > button[kind="secondary"] {
+    background: linear-gradient(135deg, var(--omnix-error) 0%, #991b1b 100%) !important;
+}
+
+
+/* ── Inputs ────────────────────────────────────────────────────────────── */
+div[data-testid="stTextInput"] input,
+div[data-testid="stNumberInput"] input,
+div[data-testid="stTextArea"] textarea {
+    background: rgba(2, 6, 23, 0.84) !important;
+    color: var(--omnix-text-base) !important;
+    border: 1px solid var(--omnix-border-cyan) !important;
+    border-radius: var(--omnix-radius-md) !important;
+    padding: 11px 14px !important;
+    font-family: 'Rajdhani', sans-serif !important;
+}
+
+div[data-testid="stTextInput"] input:focus,
+div[data-testid="stNumberInput"] input:focus {
+    border-color: rgba(56, 189, 248, 0.70) !important;
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.14) !important;
+}
+
+
+/* ── Tabs ──────────────────────────────────────────────────────────────── */
+div[data-baseweb="tab-list"] {
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: transparent !important;
+}
+
+button[data-baseweb="tab"] {
+    background: rgba(15, 23, 42, 0.72) !important;
+    border-radius: var(--omnix-radius-md) !important;
+    color: #cbd5e1 !important;
+    font-weight: 800 !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    border: 1px solid var(--omnix-border-muted) !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    background: linear-gradient(135deg,
+        rgba(56, 189, 248, 0.25),
+        rgba(168, 85, 247, 0.22)) !important;
+    color: #ffffff !important;
+    border-color: rgba(56, 189, 248, 0.55) !important;
+}
+
+
+/* ── Scrollbars ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); }
+::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.30);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.55);
+}
+
+
+/* ── RTL Support ───────────────────────────────────────────────────────── */
+[dir="rtl"] .omnix-card,
+[dir="rtl"] .omnix-hero {
+    text-align: right;
+}

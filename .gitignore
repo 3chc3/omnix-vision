@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# OMNIX VISION — Git Ignore
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ── Virtual environments ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Testing & coverage ────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ruff_cache/
+
+# ── User data (runtime-generated) ─────────────────────────────────────────
+# Keep the folder structure but ignore actual user data
+data/*.json
+data/backups/*.zip
+!data/.gitkeep
+
+# ── Uploaded / generated assets ───────────────────────────────────────────
+assets/uploads/*
+assets/images/snapshot_*.jpg
+!assets/uploads/.gitkeep
+
+# ── Streamlit secrets (NEVER commit) ──────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── IDE / OS ──────────────────────────────────────────────────────────────
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+*.log
+
+# ── Local folder names (without leading dot) ──
+venv/
+streamlit/
+pytest_cache/
+data/
